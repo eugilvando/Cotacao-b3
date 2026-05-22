@@ -1,2 +1,2 @@
-# Inoa-cotacao-b3
-Teste-cotacao0b3
+# Desafio Técnico - Consulta de Ativos B3
+    Projeto desenvolvido para o Inoa.
