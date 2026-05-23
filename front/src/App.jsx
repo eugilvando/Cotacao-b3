@@ -16,8 +16,62 @@ function App() {
       const dadosGerados = gerarDadosCotacao(filtros);
       setResultado(dadosGerados);
     } else {
-      // TODO: implementar requisição ao backend
-      setResultado(null);
+      // Requisição real ao backend
+      const params = new URLSearchParams({
+        ativos: filtros.ativos,
+        dataInicial: filtros.dataInicio,
+        dataFinal: filtros.dataFim,
+      });
+
+      fetch(`http://localhost:3001/cotacoes?${params.toString()}`)
+        .then((r) => r.json())
+        .then((json) => {
+          // Esperamos { dados: { PETR4: [{data, preco}, ...], ... } }
+          const dados = json.dados || {};
+          const ativos = Object.keys(dados);
+
+          // Monta o array de datas ordenadas
+          const todasDatas = new Set();
+          ativos.forEach((a) => (dados[a] || []).forEach((d) => todasDatas.add(d.data)));
+          const listaDatas = Array.from(todasDatas).sort();
+
+          const dadosParaOGrafico = listaDatas.map((d) => {
+            const day = d.split('-');
+            const name = `${day[2]}-${day[1]}-${day[0]}`; // DD-MM-YYYY
+            const obj = { name };
+            ativos.forEach((a) => {
+              const registro = (dados[a] || []).find((r) => r.data === d);
+              obj[a] = registro ? registro.preco : null;
+            });
+            return obj;
+          });
+
+          // Monta cards
+          const cards = ativos.map((a) => {
+            const precos = (dados[a] || []).map((r) => r.preco);
+            const precoAtual = precos[precos.length - 1] ?? 0;
+            const precoInicial = precos[0] ?? precoAtual;
+            const min = Math.min(...precos);
+            const max = Math.max(...precos);
+            const variacaoPercentual = precoInicial ? parseFloat((((precoAtual - precoInicial) / precoInicial) * 100).toFixed(2)) : 0;
+            return {
+              ativo: a,
+              precoAtual,
+              variacaoPercentual: Math.abs(variacaoPercentual),
+              subiu: variacaoPercentual >= 0,
+              min: isFinite(min) ? min : precoAtual,
+              max: isFinite(max) ? max : precoAtual,
+            };
+          });
+
+          const periodoTexto = `Da: ${filtros.dataInicio.split('-').reverse().join('/')} - Até: ${filtros.dataFim.split('-').reverse().join('/')}`;
+
+          setResultado({ dadosParaOGrafico, ativosDetectados: ativos, cards, periodoTexto });
+        })
+        .catch((err) => {
+          console.error('Erro ao buscar dados reais:', err);
+          setResultado(null);
+        });
     }
   };
 

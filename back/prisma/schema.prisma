@@ -1,0 +1,23 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  // Connection URL moved to prisma.config.ts for Prisma v7 compatibility
+}
+
+model CotacaoCache {
+  id          Int      @id @default(autoincrement())
+  ativo       String   
+  data        String   
+  preco       Float    
+  createdAt   DateTime @default(now())
+
+  @@unique([ativo, data])
+}

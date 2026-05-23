@@ -59,7 +59,7 @@ function FormularioCotacao({ onBuscar }) {
             onKeyDown={handleKeyDown}
             placeholder={listaAtivos.length === 0 ? "Ex.: PETR4, VALE3 (Aperte Enter)" : "Adicione mais..."}
           />
-          <p className="form-hint">Pressione Enter, vírgula ou clique em "Adicionar" para incluir um ativo.</p>
+          <p className="form-hint">Adicione uma vírgula ou pressione Enter para incluir um ativo.</p>
           
           {/* EXIBIÇÃO DAS TAGS LOGO ABAIXO DO INPUT CONFORME SEU PRINT */}
           {listaAtivos.length > 0 && (
