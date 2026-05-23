@@ -535,3 +535,35 @@
   }
 }
 
+/* Container do Menu Suspenso */
+.autocomplete-dropdown {
+  position: absolute;
+  top: 66px; /* Posiciona logo abaixo do input */
+  left: 0;
+  right: 0;
+  background-color: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  max-height: 180px;
+  overflow-y: auto;
+  z-index: 100;
+  list-style: none;
+  padding: 4px 0;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* Cada item da lista */
+.autocomplete-item {
+  padding: 10px 14px;
+  font-size: 13px;
+  font-family: var(--font-family);
+  color: var(--text-main);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+/* Efeito ao passar o mouse */
+.autocomplete-item:hover {
+  background-color: var(--brand-5); /* Fundo azul bem clarinho mapeado do seu Figma */
+  color: var(--brand-main);
+}

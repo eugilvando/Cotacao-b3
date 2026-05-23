@@ -8,13 +8,31 @@ function App() {
   // Iniciamos como null para exibir a tela de "Nenhum Resultado"
   const [resultado, setResultado] = useState(null);
   const [usarDadosMock, setUsarDadosMock] = useState(true);
-  const pesquisasAnteriores = ['PETR4', 'VALE3', 'ITUB4', 'MGLU3', 'BEEF3', 'UGPA3'];
+  const [listaAtivos, setListaAtivos] = useState([]);
+  const DEFAULT_PLACEHOLDERS = ['VALE3', 'PETR4', 'ITUB4'];
+  const [pesquisasAnteriores, setPesquisasAnteriores] = useState(() => {
+    try {
+      const raw = localStorage.getItem('pesquisasAnteriores');
+      const saved = raw ? JSON.parse(raw) : [];
+      // Garantir placeholders fixos no início e sem duplicatas
+      const combined = [...DEFAULT_PLACEHOLDERS, ...saved.filter(s => !DEFAULT_PLACEHOLDERS.includes(s))];
+      return combined.slice(0, 9);
+    } catch (e) { return DEFAULT_PLACEHOLDERS.slice(); }
+  });
 
   const lidarComBusca = (filtros) => {
     if (usarDadosMock) {
       // Dispara o gerador mock com os dados reais digitados na tela
       const dadosGerados = gerarDadosCotacao(filtros);
       setResultado(dadosGerados);
+      // atualiza histórico de pesquisas (mock)
+      const novos = (filtros.ativos || '').split(',').map(s => s.trim().toUpperCase()).filter(Boolean);
+      const combined = [...novos, ...pesquisasAnteriores.filter(p => !novos.includes(p))];
+      // garantir placeholders sempre presentes no início
+      const withDefaults = [...DEFAULT_PLACEHOLDERS, ...combined.filter(s => !DEFAULT_PLACEHOLDERS.includes(s))];
+      const top9 = withDefaults.filter((v, i, a) => a.indexOf(v) === i).slice(0, 9);
+      setPesquisasAnteriores(top9);
+      try { localStorage.setItem('pesquisasAnteriores', JSON.stringify(top9)); } catch(e){}
     } else {
       // Requisição real ao backend
       const params = new URLSearchParams({
@@ -67,6 +85,14 @@ function App() {
           const periodoTexto = `Da: ${filtros.dataInicio.split('-').reverse().join('/')} - Até: ${filtros.dataFim.split('-').reverse().join('/')}`;
 
           setResultado({ dadosParaOGrafico, ativosDetectados: ativos, cards, periodoTexto });
+          // Atualiza histórico de pesquisas (ativos individuais), mantendo ordem e únicos
+          const novos = (filtros.ativos || '').split(',').map(s => s.trim().toUpperCase()).filter(Boolean);
+          const combined = [...novos, ...pesquisasAnteriores.filter(p => !novos.includes(p))];
+          // garantir placeholders sempre presentes no início
+          const withDefaults = [...DEFAULT_PLACEHOLDERS, ...combined.filter(s => !DEFAULT_PLACEHOLDERS.includes(s))];
+          const top9 = withDefaults.filter((v, i, a) => a.indexOf(v) === i).slice(0, 9);
+          setPesquisasAnteriores(top9);
+          try { localStorage.setItem('pesquisasAnteriores', JSON.stringify(top9)); } catch(e){}
         })
         .catch((err) => {
           console.error('Erro ao buscar dados reais:', err);
@@ -101,7 +127,7 @@ function App() {
       
       <main className="app-main">
         <div className="sidebar">
-          <FormularioCotacao onBuscar={lidarComBusca} />
+          <FormularioCotacao onBuscar={lidarComBusca} listaAtivos={listaAtivos} setListaAtivos={setListaAtivos} />
           
           {/* Botão de limpar baseado no seu print */}
           <button onClick={limparConsulta} className="btn-limpar">
@@ -111,8 +137,17 @@ function App() {
           <div className="historico-container">
             <p className="historico-titulo">Pesquisas Anteriores:</p>
             <div className="tags-container">
-              {pesquisasAnteriores.map((ativo) => (
-                <span key={ativo} className="tag-ativo">{ativo}</span>
+              {pesquisasAnteriores.slice(0,9).map((ativo) => (
+                <button
+                  key={ativo}
+                  type="button"
+                  className="tag-ativo"
+                  onClick={() => {
+                    setListaAtivos(prev => prev.includes(ativo) ? prev : [...prev, ativo]);
+                  }}
+                >
+                  {ativo}
+                </button>
               ))}
             </div>
           </div>
