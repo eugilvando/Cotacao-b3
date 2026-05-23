@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 function FormularioCotacao({ onBuscar }) {
   const [inputValue, setInputValue] = useState('');
-  const [listaAtivos, setListaAtivos] = useState([]); // Agora controlamos como Array
+  const [listaAtivos, setListaAtivos] = useState([]);
   const [dataInicio, setDataInicio] = useState('');
   const [dataFim, setDataFim] = useState('');
 
@@ -59,6 +59,7 @@ function FormularioCotacao({ onBuscar }) {
             onKeyDown={handleKeyDown}
             placeholder={listaAtivos.length === 0 ? "Ex.: PETR4, VALE3 (Aperte Enter)" : "Adicione mais..."}
           />
+          <p className="form-hint">Pressione Enter, vírgula ou clique em "Adicionar" para incluir um ativo.</p>
           
           {/* EXIBIÇÃO DAS TAGS LOGO ABAIXO DO INPUT CONFORME SEU PRINT */}
           {listaAtivos.length > 0 && (
