@@ -1,0 +1,489 @@
+/* Layout Geral */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  background: linear-gradient(180deg, var(--brand-main, #0084D1) 0%, var(--brand-hover, #0076BA) 100%);
+  color: var(--white);
+  padding: 16px 32px;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  display: block;
+}
+
+.header-content h1 {
+  font-size: 20px; /* Alinhado ao tamanho visual do cabeçalho */
+  font-weight: 700;
+  line-height: 28px;
+  margin: 0;
+}
+
+.header-content h1 {
+  font-size: 20px; /* Alinhado ao tamanho visual do cabeçalho */
+  font-weight: 700;
+  line-height: 28px;
+}
+
+.app-main {
+  display: flex;
+  padding: 40px 32px;
+  gap: 40px;
+  flex: 1;
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Sidebar e Card de Consulta */
+.sidebar {
+  width: 420px;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card-consulta {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.card-title {
+  font-size: 24px; /* <H4> do seu guia */
+  font-weight: 700;
+  line-height: 32px;
+  margin-bottom: 12px;
+}
+
+.card-subtitle {
+  font-size: 14px; /* <p4> do seu guia */
+  line-height: 20px;
+  color: var(--brand-main);
+  background-color: var(--brand-5); /* Transparência de 5% da marca */
+  padding: 10px 14px;
+  border-radius: 6px;
+  margin-bottom: 24px;
+}
+
+/* Formulário e Inputs */
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px; /* <51> Inter medium do seu guia */
+  font-weight: 500;
+  line-height: 16px;
+  margin-bottom: 6px;
+}
+
+.input-text, .input-date {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: var(--over-bg);
+  color: #333;
+  font-family: var(--font-family);
+}
+
+.datas-row {
+  display: flex;
+  gap: 12px;
+}
+
+.btn-consultar {
+  width: 100%;
+  background-color: var(--brand-main);
+  color: var(--white);
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 16px; /* Text para botão do seu guia */
+  font-weight: 500;
+  line-height: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  transition: background 0.2s;
+}
+
+.btn-icon-svg {
+  width: 16px;   /* Largura ideal para ícones de botões */
+  height: 16px;  /* Mantém a proporção quadrada */
+  display: inline-block;
+  object-fit: contain;
+
+}
+
+.btn-consultar:hover {
+  background-color: var(--brand-hover);
+}
+
+.btn-limpar {
+  width: 100%;
+  background-color: transparent;
+  color: var(--brand-main);
+  border: 0px solid var(--border-color);
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btn-limpar:hover {
+  background-color: var(--over-bg);
+  border-color: var(--brand-main);
+}
+
+.btn-limpar:focus-visible,
+.btn-consultar:focus-visible,
+.toggle-btn:focus-visible,
+.input-close-tag:focus-visible {
+  outline: 2px solid var(--brand-main);
+  outline-offset: 2px;
+}
+
+.historico-container {
+  padding-left: 4px;
+}
+
+.historico-titulo {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 12px;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-ativo {
+  background: var(--white);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px; /* Inter medium do seu guia */
+  font-weight: 500;
+  color: #444;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+}
+
+/* Estado Vazio (Nenhum Resultado) */
+.empty-state {
+  text-align: center;
+  max-width: 420px;
+}
+
+.empty-icon-box {
+  background-color: var(--brand-5);
+  width: 96px;
+  height: 96px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px auto;
+  font-size: 24px;
+  color: var(--brand-main);
+}
+
+.empty-state h2 {
+  font-size: 20px; /* <H5> do seu guia */
+  font-weight: 700;
+  line-height: 28px;
+  margin-bottom: 8px;
+}
+
+.empty-state p {
+  font-size: 14px; /* <p4> do seu guia */
+  color: #666;
+  line-height: 20px;
+}
+
+/* Painel da Direita Expandido */
+.content-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.content-panel > .empty-state {
+  margin: auto;
+}
+
+.dashboard-results {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Grid de Cards de Resumo */
+.cards-row {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.summary-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 16px 20px;
+  flex: 1;
+  min-width: 200px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-footer-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+}
+
+.card-ticker {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.card-price {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 6px 0;
+  color: var(--text-main);
+}
+
+.card-trend {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.trend-up { color: #00bc7d; }
+.trend-down { color: #ff3b30; }
+
+.card-min-max {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* Card do Gráfico de Barras */
+.grafico-card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.grafico-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.grafico-titles h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.grafico-subtitle-date {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Mini Tags Superiores */
+.grafico-top-tags {
+  display: flex;
+  gap: 8px;
+}
+
+.mini-tag {
+  background: var(--bg-main);
+  border: 1px solid var(--border-color);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.close-tag {
+  color: #bbb;
+  cursor: pointer;
+}
+
+/* Legenda Customizada na Base */
+.custom-legend {
+  display: flex;
+  gap: 16px;
+  margin-top: 16px;
+  padding-left: 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-text {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+
+/* Container de Controles do Cabeçalho do Gráfico */
+.grafico-controls-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Estrutura do Botão Toggle */
+.toggle-container {
+  background-color: var(--over-bg); /* Fundo cinza sutil dos inputs */
+  padding: 4px;
+  border-radius: 8px;
+  display: flex;
+  gap: 2px;
+  border: 1px solid var(--border-color);
+}
+
+.toggle-btn {
+  background: none;
+  border: none;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  font-family: var(--font-family);
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+/* Estado do Botão Ativo/Selecionado */
+.toggle-btn.active {
+  background-color: var(--white);
+  color: var(--brand-main);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+.toggle-btn:hover:not(.active) {
+  color: var(--text-main);
+}
+
+/* Container das tags logo abaixo do input de pesquisa */
+.input-tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px; /* Afastamento sutil abaixo do input */
+}
+
+/* Estilo exato do seu print */
+.input-mini-tag {
+  background-color: var(--grey-2); /* Fundo cinza bem claro */
+  border: 1px solid var(--border-color);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Botão de fechar (×) dentro da tag */
+.input-close-tag {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.input-close-tag:hover {
+  color: #ff3b30; /* Fica vermelho sutil ao passar o mouse para indicar exclusão */
+}
+
+@media (max-width: 960px) {
+  .app-main {
+    flex-direction: column;
+    padding: 24px 20px;
+  }
+
+  .sidebar,
+  .content-panel {
+    width: 100%;
+  }
+
+  .datas-row,
+  .cards-row {
+    flex-direction: column;
+  }
+
+  .cards-row {
+    gap: 12px;
+  }
+
+  .grafico-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+}
+
