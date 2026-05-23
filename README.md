@@ -56,35 +56,36 @@ Siga os comandos abaixo no terminal para clonar o repositório, instalar as depe
 ```bash
 git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
 cd seu-repositorio
-
+```
 ---
 ### 2. Inicializar o Back-end (Node.js + Express + Prisma)
 Abra o terminal na raiz do projeto e execute a sequência de comandos abaixo para configurar o servidor e o banco de dados local:
-
+````
 Bash
-### 1. Entrar na pasta do servidor
+1. Entrar na pasta do servidor
 cd back
 
-### 2. Instalar as dependências do projeto
+2. Instalar as dependências do projeto
 npm install
 
-### 3. Criar o banco de dados SQLite local e rodar as migrações do Prisma
+3. Criar o banco de dados SQLite local e rodar as migrações do Prisma
 npx prisma migrate dev --name init
 
-### 4. Iniciar o servidor Node
+4. Iniciar o servidor Node
 node server.js
 O servidor do Back-end iniciará por padrão na porta 3001 (http://localhost:3001).
-
+````
 ---
 ### 3. Inicializar o Front-end (React + Vite)
 Abra uma nova aba ou janela no seu terminal (mantendo o servidor do back-end rodando na aba anterior) e execute os seguintes comandos:
-
+```
 Bash
-### 1. Garantir que está na pasta do front-end
+1. Garantir que está na pasta do front-end
 cd front
 
-### 2. Instalar as dependências da interface
+2. Instalar as dependências da interface
 npm install
 
-### 3. Iniciar o servidor de desenvolvimento do Vite
+3. Iniciar o servidor de desenvolvimento do Vite
 npm run dev
+````
