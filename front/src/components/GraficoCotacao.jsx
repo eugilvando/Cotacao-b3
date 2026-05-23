@@ -10,7 +10,7 @@ import {
 function GraficoCotacao({ resultado }) {
   const [tipoGrafico, setTipoGrafico] = useState('bar');
 
-  // ESTADO VAZIO: Substituindo o emoji pelo SVG oficial
+  // ESTADO VAZIO: Exibe uma tela amigável quando não há dados para mostrar
   if (!resultado || resultado.dadosParaOGrafico.length === 0) {
     return (
       <div className="empty-state">
@@ -22,7 +22,7 @@ function GraficoCotacao({ resultado }) {
           />
         </div>
         <h2>Nenhum Resultado</h2>
-        <p>Digite o código de uma ação (ex: PETR4) e clique em Buscar para ver o histórico de preços.</p>
+        <p>Digite o código de uma ação (ex: PETR4, VALE3, ITUB4 ) e clique em Consultar para ver o histórico de preços.</p>
       </div>
     );
   }
@@ -61,7 +61,7 @@ function GraficoCotacao({ resultado }) {
             <span className="grafico-subtitle-date">{periodoTexto}</span>
           </div>
 
-          {/* BOTÃO DE TOGGLE ALINHADO À DIREITA (Tags removidas daqui) */}
+          {/* BOTÃO DE TOGGLE ALINHADO À DIREITA*/}
           <div className="toggle-container">
             <button 
               className={`toggle-btn ${tipoGrafico === 'bar' ? 'active' : ''}`}

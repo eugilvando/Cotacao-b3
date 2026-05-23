@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 
 const ATIVOS_B3 = [
-  "PETR3", "PETR4", "VALE3", "GGBR4", "CSNA3", "USIM5", "PRIO3",
-  "ITUB4", "BBDC3", "BBDC4", "BBAS3", "SANB11", "ITSA4", "B3SA3"
+  "PETR4", "VALE3", "MGLU3", "ITUB4"
 ];
 
 function FormularioCotacao({ onBuscar, listaAtivos, setListaAtivos }) {
@@ -10,10 +9,10 @@ function FormularioCotacao({ onBuscar, listaAtivos, setListaAtivos }) {
   const [dataInicio, setDataInicio] = useState('');
   const [dataFim, setDataFim] = useState('');
   
-  // 💡 ESTADO DO AUTOCOMPLETE: Guarda as sugestões encontradas
+  // ESTADO DO AUTOCOMPLETE: Guarda as sugestões encontradas
   const [sugestoes, setSugestoes] = useState([]);
 
-  // 💡 LÓGICA DO AUTOCOMPLETE: Filtra a lista enquanto o usuário digita
+  // LÓGICA DO AUTOCOMPLETE: Filtra a lista enquanto o usuário digita
   const handleInputChange = (e) => {
     const valor = e.target.value;
     setInputValue(valor);
@@ -68,7 +67,7 @@ function FormularioCotacao({ onBuscar, listaAtivos, setListaAtivos }) {
     <div className="card-consulta">
       <h2 className="card-title">Consulta de Ações</h2>
       <div className="card-subtitle">
-        Pesquise o histórico de preços de ações da bolsa brasileira
+        Pesquise o histórico de preços de ações da bolsa brasileira.
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -79,13 +78,13 @@ function FormularioCotacao({ onBuscar, listaAtivos, setListaAtivos }) {
             type="text" 
             className="input-text"
             value={inputValue}
-            onChange={handleInputChange} // 👈 Agora monitora a digitação
+            onChange={handleInputChange}
             onKeyDown={handleKeyDown}
-            placeholder={listaAtivos.length === 0 ? "Ex.: PETR4, VALE3 (Aperte Enter)" : "Adicione mais..."}
+            placeholder={listaAtivos.length === 0 ? "Ex.: PETR4, VALE3 (pressione Enter)" : "Adicione mais..."}
             autoComplete="off" // Desativa o histórico antigo do navegador
           />
           
-          {/* 💡 CAIXA SUSPENSA DO AUTOCOMPLETE */}
+          {/* CAIXA SUSPENSA DO AUTOCOMPLETE */}
           {sugestoes.length > 0 && (
             <ul className="autocomplete-dropdown">
               {sugestoes.map((ativo) => (

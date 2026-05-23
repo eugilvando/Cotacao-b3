@@ -28,7 +28,7 @@
 }
 
 .header-content h1 {
-  font-size: 20px; /* Alinhado ao tamanho visual do cabeçalho */
+  font-size: 28px;
   font-weight: 700;
   line-height: 28px;
   margin: 0;
@@ -97,14 +97,14 @@
 }
 
 .card-title {
-  font-size: 24px; /* <H4> do seu guia */
+  font-size: 24px; 
   font-weight: 700;
   line-height: 32px;
   margin-bottom: 12px;
 }
 
 .card-subtitle {
-  font-size: 14px; /* <p4> do seu guia */
+  font-size: 14px;
   line-height: 20px;
   color: #333;
   margin-bottom: 24px;
@@ -117,7 +117,7 @@
 
 .form-group label {
   display: block;
-  font-size: 13px; /* <51> Inter medium do seu guia */
+  font-size: 13px;
   font-weight: 500;
   line-height: 16px;
   margin-bottom: 6px;
@@ -164,7 +164,7 @@
   border: none;
   padding: 12px;
   border-radius: 6px;
-  font-size: 16px; /* Text para botão do seu guia */
+  font-size: 16px;
   font-weight: 500;
   line-height: 24px;
   cursor: pointer;
@@ -177,8 +177,8 @@
 }
 
 .btn-icon-svg {
-  width: 16px;   /* Largura ideal para ícones de botões */
-  height: 16px;  /* Mantém a proporção quadrada */
+  width: 16px;
+  height: 16px;
   display: inline-block;
   object-fit: contain;
 
@@ -191,9 +191,9 @@
 .btn-limpar {
   width: 100%;
   background-color: transparent;
-  color: var(--brand-main);
+  color: #333;
   border: 0px solid var(--border-color);
-  padding: 12px;
+  padding: 4px;
   border-radius: 6px;
   font-size: 16px;
   font-weight: 500;
@@ -235,7 +235,7 @@
   background: var(--white);
   padding: 6px 12px;
   border-radius: 6px;
-  font-size: 13px; /* Inter medium do seu guia */
+  font-size: 13px;
   font-weight: 500;
   color: #444;
   border: 1px solid var(--border-color);
@@ -262,14 +262,14 @@
 }
 
 .empty-state h2 {
-  font-size: 20px; /* <H5> do seu guia */
+  font-size: 20px; 
   font-weight: 700;
   line-height: 28px;
   margin-bottom: 8px;
 }
 
 .empty-state p {
-  font-size: 14px; /* <p4> do seu guia */
+  font-size: 14px;
   color: #666;
   line-height: 20px;
 }
@@ -437,7 +437,7 @@
 
 /* Estrutura do Botão Toggle */
 .toggle-container {
-  background-color: var(--over-bg); /* Fundo cinza sutil dos inputs */
+  background-color: var(--over-bg);
   padding: 4px;
   border-radius: 8px;
   display: flex;
@@ -477,9 +477,8 @@
   margin-top: 8px; /* Afastamento sutil abaixo do input */
 }
 
-/* Estilo exato do seu print */
 .input-mini-tag {
-  background-color: var(--grey-2); /* Fundo cinza bem claro */
+  background-color: var(--grey-2);
   border: 1px solid var(--border-color);
   padding: 4px 8px;
   border-radius: 4px;
@@ -564,6 +563,6 @@
 
 /* Efeito ao passar o mouse */
 .autocomplete-item:hover {
-  background-color: var(--brand-5); /* Fundo azul bem clarinho mapeado do seu Figma */
+  background-color: var(--brand-5);
   color: var(--brand-main);
 }

@@ -8,10 +8,10 @@ Link do figma: [Link do arquivo do design em figma](https://www.figma.com/design
 
 ## 🚀 Sobre o Processo de Desenvolvimento
 
-Este projeto foi construído seguindo padrões de UX/UI e desenvolvimento do Front-end. O fluxo de trabalho combinou ação humana em design e regras de negócio com o suporte de Inteligência Artificial para acelerar e otimizar a codificação.
+Este projeto foi construído seguindo padrões de UX/UI e em seguida desenvolvimento do Front-end. O fluxo de trabalho combinou ação humana em design e regras de negócio com o suporte de Inteligência Artificial para acelerar e otimizar a codificação.
 
-*   **Front-end (Híbrido):** A estrutura base, arquitetura de componentes, refinamento visual pixel-perfect e a aplicação do Design System foram concebidos e implementados por mim. A IA atuou como suporte na estruturação rápida dos componentes React e lógica de estados, contando com **revisão humana minuciosa em todas as etapas** para garantir um código limpo mais limpo possível.
-*   **Back-end (Copiloto):** A estrutura do servidor e a camada de dados foram construídas com forte suporte de IA, permitindo uma rápida integração de rotas e mapeamento do banco de dados, sempre sob supervisão para validação da segurança e arquitetura, utilizando a API da https://brapi.dev/.
+*   **Front-end (Híbrido):** A estrutura base, arquitetura de componentes, refinamento visual pixel-perfect e a aplicação do Design System foram concebidos e implementados por mim. A IA atuou como suporte na estruturação rápida dos componentes React e lógica de estados, contando com **revisão humana em todas as etapas** para garantir um código limpo mais rápido e funcional.
+*   **Back-end (Copiloto):** A estrutura do servidor e a camada de dados foram construídas com forte suporte de IA, permitindo uma rápida integração de rotas e mapeamento do banco de dados, sempre sob supervisão para validação da segurança e arquitetura, foi utilizanda a API da https://brapi.dev/ para consultas dos ativos. (Para testes o auto completar exibe os ativos de "PETR4", "VALE3", "MGLU3", "ITUB4" )
 
 ---
 
@@ -40,3 +40,51 @@ Caso o Back-end não esteja conectado, o sistema gera automaticamente preços fi
 *   **Front-end:** React (Vite), JavaScript, CSS, Recharts (Gráficos), Ícones em formato SVG integrado.
 *   **Back-end:** Node.js, Express, Cors, Axios.
 *   **Banco de Dados & ORM:** SQLite e Prisma ORM.
+
+
+## ⚙️ Como Rodar o Projeto Localmente
+
+Siga os comandos abaixo no terminal para clonar o repositório, instalar as dependências e iniciar as aplicações.
+
+### 📋 Pré-requisitos
+*   **Node.js** (Versão 18 ou superior)
+*   **Git**
+
+---
+
+### 1. Clonar o Repositório
+```bash
+git clone [https://github.com/seu-usuario/seu-repositorio.git](https://github.com/seu-usuario/seu-repositorio.git)
+cd seu-repositorio
+
+---
+### 2. Inicializar o Back-end (Node.js + Express + Prisma)
+Abra o terminal na raiz do projeto e execute a sequência de comandos abaixo para configurar o servidor e o banco de dados local:
+
+Bash
+### 1. Entrar na pasta do servidor
+cd back
+
+### 2. Instalar as dependências do projeto
+npm install
+
+### 3. Criar o banco de dados SQLite local e rodar as migrações do Prisma
+npx prisma migrate dev --name init
+
+### 4. Iniciar o servidor Node
+node server.js
+O servidor do Back-end iniciará por padrão na porta 3001 (http://localhost:3001).
+
+---
+### 3. Inicializar o Front-end (React + Vite)
+Abra uma nova aba ou janela no seu terminal (mantendo o servidor do back-end rodando na aba anterior) e execute os seguintes comandos:
+
+Bash
+### 1. Garantir que está na pasta do front-end
+cd front
+
+### 2. Instalar as dependências da interface
+npm install
+
+### 3. Iniciar o servidor de desenvolvimento do Vite
+npm run dev

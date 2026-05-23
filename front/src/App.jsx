@@ -101,7 +101,7 @@ function App() {
     }
   };
 
-  // Função para o botão "Limpar consulta" que você colocou no design
+  // Função para o botão "Limpar consulta"
   const limparConsulta = () => {
     setResultado(null);
   };
@@ -129,7 +129,7 @@ function App() {
         <div className="sidebar">
           <FormularioCotacao onBuscar={lidarComBusca} listaAtivos={listaAtivos} setListaAtivos={setListaAtivos} />
           
-          {/* Botão de limpar baseado no seu print */}
+          {/* Botão de limpar Consulta */}
           <button onClick={limparConsulta} className="btn-limpar">
             Limpar consulta
           </button>
