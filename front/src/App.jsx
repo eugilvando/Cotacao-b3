@@ -6,13 +6,19 @@ import './App.css';
 
 function App() {
   // Iniciamos como null para exibir a tela de "Nenhum Resultado"
-  const [resultado, setResultado] = useState(null); 
+  const [resultado, setResultado] = useState(null);
+  const [usarDadosMock, setUsarDadosMock] = useState(true);
   const pesquisasAnteriores = ['PETR4', 'VALE3', 'ITUB4', 'MGLU3', 'BEEF3', 'UGPA3'];
 
   const lidarComBusca = (filtros) => {
-    // Dispara o gerador mock com os dados reais digitados na tela
-    const dadosGerados = gerarDadosCotacao(filtros);
-    setResultado(dadosGerados);
+    if (usarDadosMock) {
+      // Dispara o gerador mock com os dados reais digitados na tela
+      const dadosGerados = gerarDadosCotacao(filtros);
+      setResultado(dadosGerados);
+    } else {
+      // TODO: implementar requisição ao backend
+      setResultado(null);
+    }
   };
 
   // Função para o botão "Limpar consulta" que você colocou no design
@@ -26,6 +32,16 @@ function App() {
         <div className="header-content">
           <img src="/Logo.svg" alt="Inoa logo" className="header-icon" />
           <h1>Inoa - B3 Tracker</h1>
+        </div>
+        <div className="header-actions">
+          <button
+            type="button"
+            className="header-toggle"
+            onClick={() => setUsarDadosMock((prev) => !prev)}
+          >
+            <img src="/swap.svg" alt="Alternar fonte de dados" className="header-toggle-icon" />
+            {usarDadosMock ? 'DADOS SIMULADOS' : 'DADOS REAIS'}
+          </button>
         </div>
       </header>
       

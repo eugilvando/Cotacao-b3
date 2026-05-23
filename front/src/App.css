@@ -9,6 +9,9 @@
   background: linear-gradient(180deg, var(--brand-main, #0084D1) 0%, var(--brand-hover, #0076BA) 100%);
   color: var(--white);
   padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .header-content {
@@ -31,10 +34,40 @@
   margin: 0;
 }
 
-.header-content h1 {
-  font-size: 20px; /* Alinhado ao tamanho visual do cabeçalho */
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.header-toggle {
+  background-color: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: var(--white);
+  padding: 10px 16px;
+  border-radius: 999px;
+  font-size: 12px;
   font-weight: 700;
-  line-height: 28px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-toggle-icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+}
+
+.header-toggle:hover {
+  background-color: rgba(255, 255, 255, 0.24);
+  transform: translateY(-1px);
+}
+
+.header-toggle:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
 }
 
 .app-main {
