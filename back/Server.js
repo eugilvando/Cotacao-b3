@@ -259,3 +259,4 @@ app.listen(PORT, () => {
   console.log(`   Banco SQLite conectado via Prisma.`);
   console.log(`   BRAPI_TOKEN carregado do .env ✅`);
 });
+
